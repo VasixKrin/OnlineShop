@@ -6,7 +6,7 @@ from django.contrib import messages
 
 from .cart import Cart
 from .forms import CartAddProductForm
-from ..shop.models import Product
+from shop.models import Product
 
 @method_decorator(require_POST, name='dispatch')
 class AddToCartView(View):
@@ -35,9 +35,14 @@ class RemoveFromCartView(View):
 
 
 class CartTemplateView(TemplateView):
-    template_name = 'cart/cart_detail.html'
+    template_name = 'cart/detail.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['cart'] = Cart(self.request)
+        for item in context['cart']:
+            item['update_quantity_form'] = CartAddProductForm(
+                initial={'quantity': item['quantity'], 'override': True}
+            )
+
         return context
