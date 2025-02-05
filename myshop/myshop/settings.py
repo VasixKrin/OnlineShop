@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     # third-party
     'easy_thumbnails',
     # local
-    'shop.apps.ShopConfig',
     'cart.apps.CartConfig',
+    'shop.apps.ShopConfig',
 ]
 
 MIDDLEWARE = [
