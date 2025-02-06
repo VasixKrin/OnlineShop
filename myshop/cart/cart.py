@@ -15,6 +15,7 @@ class Cart:
             cart = self.session[settings.CART_SESSION_ID]
         self.cart = cart
 
+
     def __iter__(self):
         """Iterate over the items in the cart and get the products from the database."""
         product_ids = self.cart.keys()
