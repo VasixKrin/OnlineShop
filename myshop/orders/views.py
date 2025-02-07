@@ -32,6 +32,5 @@ class OrderCreateView(View):
             ])
             # clear the cart
             cart.clear()
-            messages.success(request, 'Your order was successfully created!')
-            return redirect(reverse('orders:order_created', args=[order.id]))
+            return render(request, 'orders/order/created.html', {'order': order})
         return render(request, 'orders/order/create.html', {'cart': cart, 'form': form})
