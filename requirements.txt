@@ -5,3 +5,5 @@ Pillow==10.3.0
 flower==2.0.1
 celery==5.4.0
 easy-thumbnails==2.8.5
+gevent==24.11.1
+stripe==9.3.0

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 from django.conf.global_settings import EMAIL_BACKEND
 
@@ -44,6 +45,7 @@ INSTALLED_APPS = [
     # local
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
+    'payment.apps.PaymentConfig',
     'shop.apps.ShopConfig',
 ]
 
@@ -137,3 +139,7 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media/'
 
 CART_SESSION_ID = 'cart'
+
+STRIPE_PUBLISH_KEY=config('STRIPE_PUBLISH_KEY')
+STRIPE_SECRET_KEY=config('STRIPE_SECRET_KEY')
+STRIPE_API_VERSION='2024-04-10'
