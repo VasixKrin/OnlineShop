@@ -22,15 +22,15 @@ class PaymentProcessView(View):
 
     def get(self, request):
         order = self.get_order(request)
-        return render(request, 'payment/process.html', order)
+        return render(request, 'payment/process.html', {'order': order})
 
     def post(self, request):
         order = self.get_order(request)
         success_url = request.build_absolute_uri(
-            reverse('payment:complete')
+            reverse('payment:completed')
         )
         cancel_url = request.build_absolute_uri(
-            reverse('payment:cancel')
+            reverse('payment:canceled')
         )
         # Stripe checkout session data
         session_data = {
