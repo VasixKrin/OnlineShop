@@ -21,7 +21,7 @@ class AddToCartView(View):
                 quantity=cd['quantity'],
                 override_quantity=cd['override']
             )
-        messages.success(request, 'The product added successfully to your cart.')
+        # messages.success(request, 'The product added successfully to your cart.')
         return redirect('cart:cart_detail')
 
 
