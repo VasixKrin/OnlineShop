@@ -2,3 +2,5 @@
 /myshop/db.sqlite3
 /myshop/cart/migrations/
 /myshop/orders/migrations/
+/.env
+/myshop/payment/migrations/

@@ -5,6 +5,7 @@ from django.urls import reverse
 from cart.cart import Cart
 from .forms import OrderCreateForm
 from .models import OrderItem
+from .tasks import order_created
 
 
 class OrderCreateView(View):
@@ -32,5 +33,7 @@ class OrderCreateView(View):
             ])
             # clear the cart
             cart.clear()
-            return render(request, 'orders/order/created.html', {'order': order})
+            order_created.delay(order.id)
+            request.session['order_id'] = order.id
+            return redirect('payment:process')
         return render(request, 'orders/order/create.html', {'cart': cart, 'form': form})
